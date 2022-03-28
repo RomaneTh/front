@@ -14,7 +14,7 @@ export class ContactForm extends React.Component<RouteComponentProps<any>, any> 
 
     componentDidMount() {
         let newContact: IContact = {
-            email: '', password: ''
+            password: ''
         };
         this.setState({ contact: newContact });
         
@@ -63,17 +63,13 @@ export class ContactForm extends React.Component<RouteComponentProps<any>, any> 
         }
         else {
             return <fieldset className="form-group">
-                <legend>New Contact</legend>
+                <legend>Update password</legend>
                 <form onSubmit={(e) => this.handleSubmit(e)}>
-                    <div className={this._formGroupClass(this.state.errors.email)}>
-                        <label htmlFor="inputEmail" className="form-control-label">Email</label>
-                        <input type="email" name="email" id="inputEmail" value={this.state.contact.email} onChange={(e) => this.handleInputChange(e)} className="form-control form-control-danger" />
-                        <div className="form-control-feedback">{this.state.errors.email}</div>
-                    </div>
                     <div className={this._formGroupClass(this.state.errors.password)}>
-                        <label htmlFor="inputPhone" className="form-control-label">Phone</label>
-                        <input type="tel" name="phone" id="inputPassword" value={this.state.contact.password} onChange={(e) => this.handleInputChange(e)} className="form-control form-control-danger" />
+                        <label htmlFor="inputPhone" className="form-control-label">Password</label>
+                        <input type="password" name="password" id="inputPassword" value={this.state.contact.password} onChange={(e) => this.handleInputChange(e)} className="form-control form-control-danger" />
                         <div className="form-control-feedback">{this.state.errors.password}</div>
+                        {/* todo display error message */}
                     </div>
                     <button className="btn btn-lg btn-primary btn-block" type="submit">Save</button>
                 </form>

@@ -28,6 +28,13 @@ export default class RestUtilities {
         return RestUtilities.request<T>("PUT", url, data);
     }
 
+    static patch<T>(
+        url: string,
+        data: Object | string
+    ): Promise<IRestResponse<T>> {
+        return RestUtilities.request<T>("PATCH", url, data);
+    }
+
     static post<T>(
         url: string,
         data: Object | string
@@ -47,6 +54,10 @@ export default class RestUtilities {
 
         headers.set('Authorization',`Bearer ${AuthStore.getToken()}`);
         headers.set('Accept','application/json');
+        headers.set('Access-Control-Allow-Origin','*');
+        // headers.set('Access-Control-Allow-Credentials', 'true');
+        headers.set('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
+        // headers.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 
         if (data) {
             if (typeof data === "object") {

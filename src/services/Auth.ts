@@ -7,13 +7,15 @@ interface IAuthResponse {
 
 export default class Auth {
     static isSignedIn(): boolean {
+        console.log('is signed in');
         return !!AuthStore.getToken();
     }
 
     signIn(email: string, password: string) {
-        return RestUtilities.post<IAuthResponse>(`/api/auth/login'}`,
-        `username=${email}&password=${password}$&grant_type=password`)
+        return RestUtilities.post<IAuthResponse>('http://localhost:5000/api/user/authenticate', 
+        { email: email,  password: password})
         .then((response) => {
+            console.log(response);
             if (!response.is_error) {
                 AuthStore.setToken(response.content.token);
             }
