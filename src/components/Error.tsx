@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 
 export class ErrorPage extends React.Component<RouteComponentProps<any>, any> {
 
@@ -10,9 +10,6 @@ export class ErrorPage extends React.Component<RouteComponentProps<any>, any> {
     getErrorMessage() {
         let message = null;
         switch (this.props.match.params.code) {
-            case 'email-confirm':
-                message = 'The email confirmation link you used is invalid or expired.'
-                break;
             default:
                 message = 'An unknown error has occured.'
         }

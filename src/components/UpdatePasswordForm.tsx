@@ -1,50 +1,50 @@
 import 'object-assign';
 import * as React from 'react';
-import { Link, Redirect, RouteComponentProps } from 'react-router-dom';
-import ContactService, { IContact } from '../services/Contacts'
-import { RoutePaths } from './Routes';
+import { RouteComponentProps } from 'react-router-dom';
+import AccountService, { IUpdatePassword } from '../services/UpdatePassword'
 
-let contactService = new ContactService();
+let accountService = new AccountService();
 
-export class ContactForm extends React.Component<RouteComponentProps<any>, any> {
+export class UpdatePasswordForm extends React.Component<RouteComponentProps<any>, any> {
     state = {
-        contact: null as IContact,
-        errors: {} as { [key: string]: string }
+        account: null as IUpdatePassword,
+        errors: {} as { [key: string]: string },
+        success: {} as { [key: string]: string }
     }
 
     componentDidMount() {
-        let newContact: IContact = {
+        let newAccount: IUpdatePassword = {
             password: ''
         };
-        this.setState({ contact: newContact });
-        
+        this.setState({ account: newAccount });
     }
 
     handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        this.saveContact(this.state.contact);
+        this.savePassword(this.state.account);
     }
 
     handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        let contactUpdates = {
+        let accountUpdates = { // todo delete
             [name]: value
         };
 
         this.setState({
-            contact: Object.assign(this.state.contact, contactUpdates)
+            account: Object.assign(this.state.account, accountUpdates)
         });
     }
 
-    saveContact(contact: IContact) {
+    savePassword(account: IUpdatePassword) {
         this.setState({ errors: {} as { [key: string]: string } });
-        contactService.update(contact).then((response) => {
+        accountService.update(account).then((response) => {
             if (response.is_error) {
                 this.setState({ errors: {password: 'Password must be between 8 and 20 characters and contain one uppercase letter, one lowercase letter, one digit and one special character.' }});
+            } else {
+                this.setState({ success: {password: 'Password successfully saved.' }});
             }
-            // Else display success
         });
     }
 
@@ -57,7 +57,7 @@ export class ContactForm extends React.Component<RouteComponentProps<any>, any> 
     }
 
     render() {
-        if (!this.state.contact) {
+        if (!this.state.account) {
             return <div>Loading...</div>;
         }
         else {
@@ -66,11 +66,13 @@ export class ContactForm extends React.Component<RouteComponentProps<any>, any> 
                 <form onSubmit={(e) => this.handleSubmit(e)}>
                     <div className={this._formGroupClass(this.state.errors.password)}>
                         <label htmlFor="inputPhone" className="form-control-label">Password</label>
-                        <input type="password" name="password" id="inputPassword" value={this.state.contact.password} onChange={(e) => this.handleInputChange(e)} className="form-control form-control-danger" />
+                        <input type="password" name="password" id="inputPassword" value={this.state.account.password} onChange={(e) => this.handleInputChange(e)} className="form-control form-control-danger" />
                         <div className="form-control-feedback">{this.state.errors.password}</div>
                     </div>
                     <button className="btn btn-lg btn-primary btn-block" type="submit">Save</button>
                 </form>
+                <div className="form-control-feedback">{this.state.success.password}</div>
+
             </fieldset>
         }
     }

@@ -1,16 +1,13 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { SignIn } from './Auth';
 import AuthService from '../services/Auth';
 import { ErrorPage } from './Error';
-import { ContactForm } from './ContactForm';
+import { UpdatePasswordForm } from './UpdatePasswordForm';
 import { Header } from './Header';
 
 export class RoutePaths {
-    // public static Contacts: string = "/contacts";
-    // public static ContactEdit: string = "/contacts/edit/:id";
-    public static ContactNew: string = "/contacts";
+    public static Account: string = "/account";
     public static SignIn: string = "/";
 }
 
@@ -18,8 +15,7 @@ export default class Routes extends React.Component<any, any> {
     render() {
         return <Switch>
             <Route exact path={RoutePaths.SignIn} component={SignIn} />
-            <DefaultLayout exact path={RoutePaths.ContactNew} component={ContactForm} />
-            {/* <DefaultLayout path={RoutePaths.ContactEdit} component={ContactForm} /> */}
+            <DefaultLayout exact path={RoutePaths.Account} component={UpdatePasswordForm} />
             <Route path='/error/:code?' component={ErrorPage} />
         </Switch>
     }
