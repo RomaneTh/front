@@ -41,11 +41,10 @@ export class ContactForm extends React.Component<RouteComponentProps<any>, any> 
     saveContact(contact: IContact) {
         this.setState({ errors: {} as { [key: string]: string } });
         contactService.update(contact).then((response) => {
-            if (!response.is_error) {
-                console.log('ok saved');
-            } else {
-                this.setState({ errors: response.error_content });
+            if (response.is_error) {
+                this.setState({ errors: {password: 'Password must be between 8 and 20 characters and contain one uppercase letter, one lowercase letter, one digit and one special character.' }});
             }
+            // Else display success
         });
     }
 
@@ -69,7 +68,6 @@ export class ContactForm extends React.Component<RouteComponentProps<any>, any> 
                         <label htmlFor="inputPhone" className="form-control-label">Password</label>
                         <input type="password" name="password" id="inputPassword" value={this.state.contact.password} onChange={(e) => this.handleInputChange(e)} className="form-control form-control-danger" />
                         <div className="form-control-feedback">{this.state.errors.password}</div>
-                        {/* todo display error message */}
                     </div>
                     <button className="btn btn-lg btn-primary btn-block" type="submit">Save</button>
                 </form>
