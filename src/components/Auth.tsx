@@ -53,10 +53,10 @@ export class SignIn extends React.Component<RouteComponentProps<any>, any> {
                     </div>
                 }
                 <br/>
-                <label htmlFor="inputEmail" className="form-control-label sr-only">Email address</label>
+                <label htmlFor="inputEmail" className="form-control-label sr-only">Email address </label>
                 <input type="email" id="inputEmail" ref="email" defaultValue="romane.thu@gmail.com" className="form-control form-control-danger" placeholder="Email address"/>
                 <br/>
-                <label htmlFor="inputPassword" className="form-control-label sr-only">Password</label>
+                <label htmlFor="inputPassword" className="form-control-label sr-only">Password </label>
                 <input type="password" id="inputPassword" ref="password" defaultValue="Password123!" className="form-control" placeholder="Password" />
                 <br/><br/>
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
