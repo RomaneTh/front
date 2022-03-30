@@ -9,7 +9,6 @@ import './src/polyfills/object-assign';
 import './src/polyfills/array-find';
 
 // Styles
-// import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import './src/styles/global.css';
 
 ReactDOM.render(
