@@ -36,24 +36,24 @@ var config = {
                             sourceMap: false
                         }
                     },
-                    {
-                       loader: "stylus-loader"
-                   }
+                //     {
+                //        loader: "stylus-loader"
+                //    }
                 ]
             },
             { test: /\.ts(x?)$/, use: ["ts-loader"] },
             { test: /\.css/, use: ['style-loader', 'css-loader'] },
-            {
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 100000,
-                        }
-                    }
-                ]
-            }
+            // {
+            //     test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+            //     use: [
+            //         {
+            //             loader: 'url-loader',
+            //             options: {
+            //                 limit: 100000,
+            //             }
+            //         }
+            //     ]
+            // }
         ]
     },
     devtool: "inline-source-map",
