@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  front:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    container_name: front-spimed
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    # networks:
+    #   - api-network
+    #   - app-network
+
+# networks:
+#   api-network:
+#     driver: bridge
+#     name: api-network
+#   app-network:
+#     driver: bridge
+#     name: cibiltech-app_app-network

@@ -13,7 +13,6 @@
     "react-dom": "^17.0.2",
     "react-router": "^5",
     "react-router-dom": "^5",
-    "react-scripts": "^5",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.2.8",
     "typescript": "^4.6.3",
@@ -27,8 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "webdev": "webpack-dev-server --open --hot",
-    "webbuild": "webpack --mode production --progress --hide-modules"
+    "watch": "webpack-dev-server --open --hot"
   },
   "eslintConfig": {
     "extends": [
@@ -47,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-scripts": "^5.0.0"
   }
 }
