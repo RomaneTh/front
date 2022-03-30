@@ -36,9 +36,9 @@ var config = {
                             sourceMap: false
                         }
                     },
-                    // {
-                    //    loader: "stylus-loader"
-                   // }
+                    {
+                       loader: "stylus-loader"
+                   }
                 ]
             },
             { test: /\.ts(x?)$/, use: ["ts-loader"] },
