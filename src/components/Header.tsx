@@ -12,8 +12,6 @@ export class Header extends React.Component<RouteComponentProps<any>, any> {
     }
 
     render() {
-        const search = this.props.location.search;
-
         return  <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                     <button className="btn btn-outline-warning my-2 my-sm-0" type="button" onClick={() => this.signOut()}>Sign out</button>
                 </nav>;
