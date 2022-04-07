@@ -5,10 +5,12 @@ import AuthService from '../services/Auth';
 import { ErrorPage } from './Error';
 import { UpdatePasswordForm } from './UpdatePasswordForm';
 import { Header } from './Header';
+import { Hash } from './Hash';
 
 export class RoutePaths {
     public static Account: string = "/account";
     public static SignIn: string = "/";
+    public static Hash: string = "/hash";
 }
 
 export default class Routes extends React.Component<any, any> {
@@ -32,7 +34,7 @@ const DefaultLayout = ({ component: Component, ...rest }: { component: any, path
             </div>
         ) : (
                 <Redirect to={{
-                    pathname: RoutePaths.SignIn,
+                    pathname: RoutePaths.Hash,
                     state: { from: props.location }
                 }} />
             )

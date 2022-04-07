@@ -3,6 +3,7 @@ import AuthStore from '../stores/Auth';
 
 interface IAuthResponse {
     token: string;
+    HashedInput: string;
 }
 
 export default class Auth {
@@ -20,6 +21,15 @@ export default class Auth {
             return response;
         });
     }
+
+    postHash(word: string) {
+        return RestUtilities.post<IAuthResponse>('http://40.91.234.105:5000/api', 
+        { input: word})
+        .then((response) => {
+            return response;
+        });
+    }
+
 
     signOut(): void {
         AuthStore.removeToken();
